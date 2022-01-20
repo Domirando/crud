@@ -85,7 +85,7 @@ function AddUsers({ onCreate }) {
         <form style={styles.form} onSubmit={submitHandler}>
             <input {...inputName.bind} type="text" placeholder="Full name... " style={styles.input} id="addUserName" />
             <input {...inputEmail.bind} type="email" placeholder="Email... " style={styles.input} id="addUserEmail" />
-            <input {...inputPhone.bind} type="number" placeholder="Phone... " style={styles.input} id="addUserTitle" /><br />
+            <input {...inputPhone.bind} type="text" placeholder="Phone... " style={styles.input} id="addUserTitle" /><br />
             <button style={styles.btn} type="submit">Add</button>
         </form>
     )
