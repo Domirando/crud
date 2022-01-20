@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
 const styles = {
+    form: {
+        textAlign: 'center'
+    },
     input: {
         height: '1.5rem',
         borderRadius: '4px',
@@ -24,7 +27,33 @@ const styles = {
     }
 }
 
-function useInputValue(defaultValue = '') {
+function useInputName(defaultValue = '') {
+    const [value, setValue] = useState(defaultValue);
+
+    return {
+        bind: {
+            value,
+            onChange: event => setValue(event.target.value)
+        },
+        clear: () => setValue(''),
+        value: () => value
+    }
+
+}
+function useInputEmail(defaultValue = '') {
+    const [value, setValue] = useState(defaultValue);
+
+    return {
+        bind: {
+            value,
+            onChange: event => setValue(event.target.value)
+        },
+        clear: () => setValue(''),
+        value: () => value
+    }
+
+}
+function useInputTitle(defaultValue = '') {
     const [value, setValue] = useState(defaultValue);
 
     return {
@@ -39,19 +68,25 @@ function useInputValue(defaultValue = '') {
 }
 
 function AddUsers({ onCreate }) {
-    const input = useInputValue('')
+    const inputTitle = useInputTitle('')
+    const inputEmail = useInputEmail('')
+    const inputName = useInputName('')
 
     function submitHandler(event) {
         event.preventDefault()
 
-        if(input.value().trim()){
-            onCreate(input.value())
-            input.clear()
+        if(inputName.value().trim()){
+            onCreate(inputName.value(), inputTitle.value(), inputEmail.value(),)
+            inputName.clear()
+            inputTitle.clear()
+            inputEmail.clear()
         }
     }
     return (
-        <form onSubmit={submitHandler}>
-            <input {...input.bind} type="text" placeholder="Type new user... " style={styles.input} id="addUser" />
+        <form style={styles.form} onSubmit={submitHandler}>
+            <input {...inputName.bind} type="text" placeholder="Full name... " style={styles.input} id="addUser" />
+            <input {...inputEmail.bind} type="email" placeholder="Email... " style={styles.input} id="addUser" />
+            <input {...inputTitle.bind} type="text" placeholder="Title... " style={styles.input} id="addUser" /><br />
             <button style={styles.btn} type="submit">Add</button>
         </form>
     )

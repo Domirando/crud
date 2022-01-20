@@ -2,16 +2,22 @@ import '../styles/App.css';
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import AddUsers from "./users";
+// import Modal from './Modal/Modal'
 function App() {
   const [users, setUsers] = useState([]);
   const [fetchUsers, setFetchUsers] = useState(true);
 
-  // const addUsers = React.lazy(() => new Promise(resolve => {
-  //   setTimeout(() => {
-  //     resolve(import('./users.js'))
-  //   }, 3000)
-  // }))
-
+  function addUsers(name, title, email) {
+    return (setUsers(users.concat([{
+          name,
+          email,
+          title,
+          id: Date.now(),
+          completed: false
+        }
+        ]))
+    )
+  }
   useEffect(() => {   
     if (!fetchUsers) return;
 
@@ -23,28 +29,6 @@ function App() {
     setFetchUsers(false)
   }, [fetchUsers])
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault()
-  //
-  //   let newUser = {
-  //     name: 'something'
-  //   }
-  //
-  //   axios.post('https://jsonplaceholder.typicode.com/users', newUser)
-  //       .then((response) => {
-  //         console.log(response.data)
-  //         return response.data
-  //       })
-  //       .then((json) => console.log(json));
-  //   }
-
-  function addUsers(title) {
-    setUsers(users.concat([{
-      title,
-      id: Date.now(),
-      completed: false
-    }]))
-  }
 
   const deleteUser = (person) => {
     console.log(person.id)
@@ -54,13 +38,6 @@ function App() {
     <div className="flex flex-col">
       <h1 className="text-[40px] self-center">Users</h1>
       <AddUsers onCreate={addUsers}/>
-      {/*<form onSubmit={AddUsers}>*/}
-      {/*  <label>*/}
-      {/*    Person Name:*/}
-      {/*    <input type="text" className="inputAdding" name="name" />*/}
-      {/*  </label>*/}
-      {/*  <button type="submit">add</button>*/}
-      {/*</form>*/}
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -113,6 +90,7 @@ function App() {
           </div>
         </div>
       </div>
+      {/*<Modal />*/}
     </div>
   )
 }
