@@ -30,8 +30,8 @@ function App() {
   }, [fetchUsers])
 
 
-  const deleteUser = (person) => {
-    console.log(person.id)
+  const deleteUser = (id) => {
+    setUsers(users.filter(user => user.id !== id))
   }
 
   return (
@@ -79,7 +79,7 @@ function App() {
                       <a href="#" className="text-indigo-600 hover:text-indigo-900">
                         Edit
                       </a>
-                      <button href="#" onClick={()=>deleteUser(person)} className="text-indigo-600 hover:text-indigo-900">
+                      <button href="#" onClick={()=>deleteUser(person.id)} className="text-indigo-600 hover:text-indigo-900">
                         Delete
                       </button>
                     </td>
