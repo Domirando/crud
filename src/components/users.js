@@ -51,7 +51,6 @@ function useInputEmail(defaultValue = '') {
         clear: () => setValue(''),
         value: () => value
     }
-
 }
 function useInputTitle(defaultValue = '') {
     const [value, setValue] = useState(defaultValue);
@@ -68,7 +67,7 @@ function useInputTitle(defaultValue = '') {
 }
 
 function AddUsers({ onCreate }) {
-    const inputTitle = useInputTitle('')
+    const inputPhone = useInputTitle('')
     const inputEmail = useInputEmail('')
     const inputName = useInputName('')
 
@@ -76,17 +75,17 @@ function AddUsers({ onCreate }) {
         event.preventDefault()
 
         if(inputName.value().trim()){
-            onCreate(inputName.value(), inputTitle.value(), inputEmail.value(),)
+            onCreate(inputName.value(), inputPhone.value(), inputEmail.value(),)
             inputName.clear()
-            inputTitle.clear()
+            inputPhone.clear()
             inputEmail.clear()
         }
     }
     return (
         <form style={styles.form} onSubmit={submitHandler}>
-            <input {...inputName.bind} type="text" placeholder="Full name... " style={styles.input} id="addUser" />
-            <input {...inputEmail.bind} type="email" placeholder="Email... " style={styles.input} id="addUser" />
-            <input {...inputTitle.bind} type="text" placeholder="Title... " style={styles.input} id="addUser" /><br />
+            <input {...inputName.bind} type="text" placeholder="Full name... " style={styles.input} id="addUserName" />
+            <input {...inputEmail.bind} type="email" placeholder="Email... " style={styles.input} id="addUserEmail" />
+            <input {...inputPhone.bind} type="number" placeholder="Phone... " style={styles.input} id="addUserTitle" /><br />
             <button style={styles.btn} type="submit">Add</button>
         </form>
     )
