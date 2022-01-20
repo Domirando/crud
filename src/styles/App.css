@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  @apply text-red-800 p-[50px];
 }
 
 .App-logo {
