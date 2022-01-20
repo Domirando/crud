@@ -1,12 +1,13 @@
 .App {
   @apply text-red-800 p-[50px];
 }
-
+.functionalities{
+	@apply w-[65%] text-center mx-auto my-0;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
