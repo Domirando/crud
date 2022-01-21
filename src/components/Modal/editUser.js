@@ -3,6 +3,7 @@ import {LockClosedIcon} from "@heroicons/react/solid";
 
 export default function EditUser(props){
     const [edit, setEdit] = useState(false);
+    const [isOpen, setOpen] = useState(true)
     const [editingUser, setEditingUsers] = useState({
         name: '',
         email: '',
@@ -24,6 +25,7 @@ export default function EditUser(props){
     function saveChanges() {
         let editingPerson = users.find(() => users.id === editingUser.id)
         console.log(editingPerson)
+        setOpen(false)
     }
     function handleChange(e) {
         e.preventDefault()
@@ -38,7 +40,7 @@ export default function EditUser(props){
                className="text-indigo-600 text-center hover:text-indigo-900">
                 Edit
             </a>
-            {edit && (
+            {edit && isOpen && (
                 <div className='flex justify-center pt-[5rem] top-0 right-0 left-0 bottom-0 fixed bg-slate-200 '>
                 <form onSubmit={editUser} className="p-[2rem] w-[400px] h-[200px] rounded-md text-[26px] mt-8 space-y-6" action="#" method="POST">
                 <h1>Edit</h1>
