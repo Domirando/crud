@@ -35,11 +35,12 @@ export default function EditUser(props){
                 setEdit(true),
                 editUser(props.person)
             )}
-               className="text-indigo-600 hover:text-indigo-900">
+               className="text-indigo-600 text-center hover:text-indigo-900">
                 Edit
             </a>
             {edit && (
-                <form onSubmit={editUser} className="text-[26px] mt-8 space-y-6" action="#" method="POST">
+                <div className='flex justify-center pt-[5rem] top-0 right-0 left-0 bottom-0 fixed bg-slate-200 '>
+                <form onSubmit={editUser} className="p-[2rem] w-[400px] h-[200px] rounded-md text-[26px] mt-8 space-y-6" action="#" method="POST">
                 <h1>Edit</h1>
                 <input type="hidden" name="remember"  defaultValue="true" />
                 <div className="rounded-md shadow-sm -space-y-px">
@@ -100,6 +101,7 @@ export default function EditUser(props){
                     </button>
                 </div>
             </form>
+                </div>
             )}
         < />
     ) }
