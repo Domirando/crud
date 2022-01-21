@@ -41,12 +41,11 @@ export default function EditUser(props){
                 Edit
             </a>
             {edit && isOpen && (
-                <div className='flex justify-center pt-[5rem] top-0 right-0 left-0 bottom-0 fixed bg-slate-200 '>
-                <form onSubmit={editUser} className="p-[2rem] w-[400px] h-[200px] rounded-md text-[26px] mt-8 space-y-6" action="#" method="POST">
-                <h1 className='text-center'>Edit</h1>
-                <input type="hidden" name="remember"  defaultValue="true" />
-                <div className="rounded-md shadow-sm -space-y-px">
-                    <div className='mb-[20px]'>
+                <div className='fixed top-0 bottom-0 bg-cray-200 flex justify-center right-0 left-0 pt-[2rem]'>
+                    <form  className='flex gap-y-[20px] rounded-lg justify-self-center self-center justify-center border-2 bg-white h-[400px] items-center w-[50%] self-center flex-col' onSubmit={editUser}>
+                    <h1 className='text-center text-2xl'>Edit</h1>
+                <div className="rounded-md flex flex-col gap-y-[12px] shadow-sm -space-y-px">
+                    <div className=''>
                         <label htmlFor="name" className="sr-only">
                             Name
                         </label>
@@ -61,7 +60,7 @@ export default function EditUser(props){
                             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         />
                     </div>
-                    <div className='mb-[20px]'>
+                    <div className=''>
                         <label htmlFor="email" className="sr-only">
                             Email
                         </label>
@@ -94,7 +93,7 @@ export default function EditUser(props){
                 <div>
                     <button onClick={saveChanges}
                             type="submit"
-                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 px-[70px]"
                     >
                     <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                       <LockClosedIcon className="h-5 w-5 text-white group-hover:text-indigo-100" aria-hidden="true" />
