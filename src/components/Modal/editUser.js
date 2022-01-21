@@ -43,7 +43,7 @@ export default function EditUser(props){
             {edit && isOpen && (
                 <div className='flex justify-center pt-[5rem] top-0 right-0 left-0 bottom-0 fixed bg-slate-200 '>
                 <form onSubmit={editUser} className="p-[2rem] w-[400px] h-[200px] rounded-md text-[26px] mt-8 space-y-6" action="#" method="POST">
-                <h1>Edit</h1>
+                <h1 className='text-center'>Edit</h1>
                 <input type="hidden" name="remember"  defaultValue="true" />
                 <div className="rounded-md shadow-sm -space-y-px">
                     <div className='mb-[20px]'>
@@ -61,7 +61,7 @@ export default function EditUser(props){
                             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         />
                     </div>
-                    <div>
+                    <div className='mb-[20px]'>
                         <label htmlFor="email" className="sr-only">
                             Email
                         </label>
@@ -87,7 +87,7 @@ export default function EditUser(props){
                             name="email"
                             autoComplete="current-email"
                             required
-                            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         />
                     </div>
                 </div>

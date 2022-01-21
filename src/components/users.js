@@ -40,7 +40,7 @@ function useInputTitle(defaultValue = '') {
 
 }
 
-function AddUsers({ styles, onCreate, state }) {
+function AddUsers({ styles, onCreate }) {
     const inputPhone = useInputTitle('')
     const inputEmail = useInputEmail('')
     const inputName = useInputName('')
@@ -54,7 +54,7 @@ function AddUsers({ styles, onCreate, state }) {
             inputPhone.clear()
             inputEmail.clear()
         }
-        state(true)
+        setOpen(false)
 
 
     }
@@ -67,7 +67,7 @@ function AddUsers({ styles, onCreate, state }) {
                 <input {...inputName.bind} type="text" placeholder="Full name... " id="addUserName" className='w-full border rounded p-[5px]' />
                 <input {...inputEmail.bind} type="email" placeholder="Email... " id="addUserEmail" className='w-full border rounded p-[5px]'/>
                 <input {...inputPhone.bind} type="text" placeholder="Phone... " id="addUserTitle" className='w-full border rounded p-[5px]'/><br />
-                <button className='flex justify-center items-center rounded bg-cyan-800 w-[100px] pt-[5px] text-white' type="submit" onClick={() => setOpen(false)} >Add</button>
+                <button className='flex justify-center items-center rounded bg-cyan-800 w-[100px] pt-[5px] text-white' type="submit" >Add</button>
             </form>
         </div>
         )

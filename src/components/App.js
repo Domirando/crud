@@ -39,12 +39,16 @@ function App() {
   return (
     <div className="flex flex-col">
       <h1 className="text-[40px] self-center">Users</h1>
-        <div className="justify-center functionalities flex flex-col">
-            <button className='self-end border border-blue-600 py-1 px-2 rounded-md m-2' onClick={() => setAdding(true)}>add new user</button>
-            {adding && (<div className='border'><AddUsers onCreate={addUsers} styles='fixed top-0 bottom-0 bg-cray-200 flex justify-center right-0 left-0 pt-[2rem]'/></div>)}
-        </div>
-        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div className="overflow-x-auto">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div className="justify-center functionalities mb-[15px] flex flex-col">
+                <button className='self-end border border-blue-600 py-1 px-2 rounded-md m-2' onClick={() => setAdding(true)}>add new user</button>
+                {adding && (
+                    <div className='border'>
+                        <AddUsers onCreate={addUsers} styles='fixed top-0 bottom-0 bg-cray-200 flex justify-center right-0 left-0 pt-[2rem]'/>
+                    </div>
+                )}
+            </div>
           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
