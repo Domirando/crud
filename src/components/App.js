@@ -76,13 +76,13 @@ function App() {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div>
-                          <div className="text-sm font-medium text-gray-900">{person.name}</div>
-                          <div className="text-sm text-gray-500">{person.email}</div>
+                          <div className="text-sm font-medium text-gray-900" id={person.email+'_name'}>{person.name}</div>
+                          <div className="text-sm text-gray-500" id={person.email+'_email'}>{person.email}</div>
                         </div>
                       </div>
                     </td>
 			        <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{person.phone}</div>
+                      <div className="text-sm text-gray-900" id={person.email+'_phone'}>{person.phone}</div>
                     </td>
                     <td className="px-6 py-4 flex gap-x-[10px] whitespace-nowrap text-right text-sm font-medium">
                       <EditUser person={person} users={users}/>

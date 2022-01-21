@@ -4,6 +4,9 @@ import {LockClosedIcon} from "@heroicons/react/solid";
 export default function EditUser(props){
     const [edit, setEdit] = useState(false);
     const [isOpen, setOpen] = useState(true)
+    const [userName, setName] = useState('')
+    const [userEmail, setEmail] = useState('')
+    const [userPhone, setPhone] = useState('')
     const [editingUser, setEditingUsers] = useState({
         name: '',
         email: '',
@@ -11,40 +14,37 @@ export default function EditUser(props){
     })
     useEffect(() => {
 
-        }, [editingUser])
+    }, [setName, setPhone, setEmail])
 
     function editUser(person) {
-        setEditingUsers({
-            name: person.name,
-            email: person.email,
-            phone: person.phone
-        })
+        setName(person.name)
+        setEmail(person.email)
+        setPhone(person.phone)
     }
     let users = props.users
     function saveChanges() {
         let editingPerson = users.find(() => users.id === editingUser.id)
+        setEditingUsers({
+            name: userName,
+            email: userEmail,
+            phone: userPhone
+        })
+        document.getElementById(editingPerson.email+'_name').innerHTML = editingUser.name
+        document.getElementById(editingPerson.email+'_email').innerHTML = editingUser.email
+        document.getElementById(editingPerson.email+'_phone').innerHTML = editingUser.phone
         setOpen(false)
-        editingPerson.name = editingUser.name;
-        editingPerson.email = editingUser.email;
-        editingPerson.phone = editingUser.phone
     }
     function handleChangeEmail(e) {
         e.preventDefault()
-        setEditingUsers({
-            email: e.target.value
-        })
+        setEmail(e.target.value)
     }
     function handleChangePhone(e) {
         e.preventDefault()
-        setEditingUsers({
-            phone: e.target.value
-        })
+        setPhone(e.target.value)
     }
     function handleChangeName(e) {
         e.preventDefault()
-        setEditingUsers({
-            name: e.target.value
-        })
+        setName(e.target.value)
     }
     return (
         <>
@@ -66,7 +66,7 @@ export default function EditUser(props){
                                 </label>
                                 <input
                                     onChange={handleChangeName}
-                                    value={editingUser.name}
+                                    value={userName}
                                     id="nameUserEdit"
                                     name="name"
                                     type="text"
@@ -81,7 +81,7 @@ export default function EditUser(props){
                                 </label>
                                 <input
                                     onChange={handleChangeEmail}
-                                    value={editingUser.email}
+                                    value={userEmail}
                                     id="userEmailEdit"
                                     name="email"
                                     type="email"
@@ -96,7 +96,7 @@ export default function EditUser(props){
                                 </label>
                                 <input
                                     onChange={handleChangePhone}
-                                    value={editingUser.phone}
+                                    value={userPhone}
                                     id="userEmailEdit"
                                     name="email"
                                     autoComplete="current-email"
