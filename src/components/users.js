@@ -48,15 +48,12 @@ function AddUsers({ styles, onCreate }) {
     function submitHandler(event) {
         event.preventDefault()
         if(inputName.value().trim()){
-
             onCreate(inputName.value(), inputPhone.value(), inputEmail.value(),)
             inputName.clear()
             inputPhone.clear()
             inputEmail.clear()
         }
         setOpen(false)
-
-
     }
     return (
         <>
