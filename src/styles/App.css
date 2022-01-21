@@ -1,9 +1,9 @@
 .App {
   @apply text-red-800 p-[50px];
 }
-.functionalities{
-	@apply w-[65%] text-center mx-auto my-0;
-}
+/*.functionalities{*/
+/*	@apply w-[65%] text-center mx-auto my-0;*/
+/*}*/
 .App-logo {
   height: 40vmin;
   pointer-events: none;

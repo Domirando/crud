@@ -1,32 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
-const styles = {
-    form: {
-        textAlign: 'center'
-    },
-    input: {
-        height: '1.5rem',
-        borderRadius: '4px',
-        margin: '1rem 1rem 1.8rem 0px',
-        padding: '0.5rem 1rem',
-        border: '1px solid #ccc',
-        fontSize: '16px',
-        width: '65%'
-    },
-    btn: {
-        height: '2.5rem',
-        borderRadius: '4px',
-        marginRight: '5px',
-        border: 'none',
-        color: '#fff',
-        backgroundColor: 'red',
-        fontSize: '16px',
-        width: '5rem',
-        cursor: 'pointer'
-    }
-}
-
 function useInputName(defaultValue = '') {
     const [value, setValue] = useState(defaultValue);
 
@@ -66,28 +40,33 @@ function useInputTitle(defaultValue = '') {
 
 }
 
-function AddUsers({ onCreate }) {
+function AddUsers({ styles, onCreate, state }) {
     const inputPhone = useInputTitle('')
     const inputEmail = useInputEmail('')
     const inputName = useInputName('')
-
     function submitHandler(event) {
         event.preventDefault()
-
         if(inputName.value().trim()){
+
             onCreate(inputName.value(), inputPhone.value(), inputEmail.value(),)
             inputName.clear()
             inputPhone.clear()
             inputEmail.clear()
         }
+        state(true)
+
+
     }
     return (
-        <form style={styles.form} onSubmit={submitHandler}>
-            <input {...inputName.bind} type="text" placeholder="Full name... " style={styles.input} id="addUserName" />
-            <input {...inputEmail.bind} type="email" placeholder="Email... " style={styles.input} id="addUserEmail" />
-            <input {...inputPhone.bind} type="text" placeholder="Phone... " style={styles.input} id="addUserTitle" /><br />
-            <button style={styles.btn} type="submit">Add</button>
-        </form>
+        <div className={styles}>
+            <form  className='bg-[#ffff] flex gap-y-[20px] rounded-lg  justify-self-center self-center justify-center h-[400px] items-center w-[60%] bg-white self-center py-[30px] px-[150px] flex-col' onSubmit={submitHandler}>
+                <h1 className='mb-[10px]'>Add new user: </h1>
+                <input {...inputName.bind} type="text" placeholder="Full name... " id="addUserName" className='w-full rounded p-[5px]' />
+                <input {...inputEmail.bind} type="email" placeholder="Email... " id="addUserEmail" className='w-full rounded p-[5px]'/>
+                <input {...inputPhone.bind} type="text" placeholder="Phone... " id="addUserTitle" className='w-full rounded p-[5px]'/><br />
+                <button className='bg-cyan-800 w-[100px] pt-[5px] text-white' type="submit">Add</button>
+            </form>
+        </div>
     )
 }
 

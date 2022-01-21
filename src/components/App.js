@@ -2,13 +2,19 @@ import '../styles/App.css';
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import AddUsers from "./users";
-import { LockClosedIcon } from '@heroicons/react/solid'
 import EditUser from "./Modal/editUser";
-// import Modal from './Modal/Modal'
+import {BrowserRouter as Router, Link, Switch, Route} from "react-router-dom";
+import log from "tailwindcss/lib/util/log";
 function App() {
   const [users, setUsers] = useState([]);
   const [fetchUsers, setFetchUsers] = useState(true);
-
+    const [adding, setAdding] = useState({
+            state: false,
+            style: {
+                display: 'none'
+            }
+        },
+    )
   function addUsers(name, phone, email) {
     return (setUsers(users.concat([{
           name,
@@ -37,14 +43,22 @@ function App() {
     setUsers(users.filter(user => user.id !== id))
   }
 
-
-
   return (
     <div className="flex flex-col">
       <h1 className="text-[40px] self-center">Users</h1>
-        <div className="functionalities">
-          <AddUsers onCreate={addUsers}/>
-
+        <div className="justify-center functionalities flex flex-col">
+            <button className='self-end border border-blue-600 py-1 px-2 rounded-md m-2' onClick={() => setAdding({
+                state: true,
+                style: {
+                    display: 'block'
+                }
+            }
+            )}>add new user</button>
+            <div style={adding.style}>
+            {adding && (
+                <AddUsers onCreate={addUsers} state={setAdding} styles='fixed hidden top-0 bottom-0 flex justify-center bg-[#ffff] right-0 left-0 pt-[2rem]'/>
+            )}
+            </div>
         </div>
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
