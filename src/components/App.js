@@ -39,10 +39,11 @@ function App() {
 
   const saveEditedUser = (user) => {
     let editedUsersList = [...users];
+    console.log(user.id)
     let index = editedUsersList.findIndex((person) => user.id === person.id);
     editedUsersList.splice(index, 1, user)
-    console.log(editedUsersList);
     setUsers(editedUsersList);
+    console.log(users)
   };
 
   return (
@@ -89,7 +90,7 @@ function App() {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {users.map((person) => (
-                  <tr key={person.email}>
+                  <tr key={person.id}>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div>
