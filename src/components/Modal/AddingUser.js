@@ -1,63 +1,50 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
-function useInputName(defaultValue = '') {
-    const [value, setValue] = useState(defaultValue);
-
-    return {
-        bind: {
-            value,
-            onChange: event => setValue(event.target.value)
-        },
-        clear: () => setValue(''),
-        value: () => value
-    }
-
-}
-function useInputEmail(defaultValue = '') {
-    const [value, setValue] = useState(defaultValue);
-
-    return {
-        bind: {
-            value,
-            onChange: event => setValue(event.target.value)
-        },
-        clear: () => setValue(''),
-        value: () => value
-    }
-}
-function useInputTitle(defaultValue = '') {
-    const [value, setValue] = useState(defaultValue);
-
-    return {
-        bind: {
-            value,
-            onChange: event => setValue(event.target.value)
-        },
-        clear: () => setValue(''),
-        value: () => value
-    }
-
-}
-
 function AddUsers({ styles, onCreate }) {
     const inputPhone = useInputTitle('')
     const inputEmail = useInputEmail('')
     const inputName = useInputName('')
     const [isOpen, setOpen] = useState(true)
-    // document.addEventListener("mousedown", (e) => {
-    //     // console.log(concernedElement, e.target);
-    //     if (concernedElement.contains(e.target)) {
-    //         console.log("clicked inside");
-    //     } else {
-    //         console.log("clicked outside");
-    //     }
-    // });
-    //
-    document.addEventListener('mousedown', event => {
-        setOpen(false)
+    function useInputName(defaultValue = '') {
+        const [value, setValue] = useState(defaultValue);
 
-    })
+        return {
+            bind: {
+                value,
+                onChange: event => setValue(event.target.value)
+            },
+            clear: () => setValue(''),
+            value: () => value
+        }
+
+    }
+    function useInputEmail(defaultValue = '') {
+        const [value, setValue] = useState(defaultValue);
+
+        return {
+            bind: {
+                value,
+                onChange: event => setValue(event.target.value)
+            },
+            clear: () => setValue(''),
+            value: () => value
+        }
+    }
+    function useInputTitle(defaultValue = '') {
+        const [value, setValue] = useState(defaultValue);
+
+        return {
+            bind: {
+                value,
+                onChange: event => setValue(event.target.value)
+            },
+            clear: () => setValue(''),
+            value: () => value
+        }
+
+    }
+
     function submitHandler(event) {
         event.preventDefault()
         if(inputName.value().trim()){

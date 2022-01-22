@@ -7,21 +7,14 @@ export default function EditUser({ users, person, callback }) {
   const [userName, setName] = useState("");
   const [userEmail, setEmail] = useState("");
   const [userPhone, setPhone] = useState("");
-  useEffect(() => {}, [setName, setPhone, setEmail]);
 
   function editUser(person) {
     setName(person.name);
     setEmail(person.email);
     setPhone(person.phone);
     setOpen(!isOpen);
-    console.log("now you have to edit: ", person.name)
   }
-  // document.addEventListener('mousedown', event => {
-  //
-  //   setOpen(!isOpen)
-  // })
   function saveChanges(edUser) {
-
     let editingPerson = users.find((person) => person.id === edUser.id);
     editingPerson.name = userName;
     editingPerson.email = userEmail;
@@ -29,17 +22,10 @@ export default function EditUser({ users, person, callback }) {
 
     callback(editingPerson);
   }
-  function handleChangeEmail(e) {
-    e.preventDefault();
-    setEmail(e.target.value);
-  }
-  function handleChangePhone(e) {
-    e.preventDefault();
-    setPhone(e.target.value);
-  }
-  function handleChangeName(e) {
-    e.preventDefault();
-    setName(e.target.value);
+  function handleChange(e, fn) {
+    e.preventDefault()
+    let value = e.target.value;
+    fn(value)
   }
   return (
       <>
@@ -63,7 +49,7 @@ export default function EditUser({ users, person, callback }) {
                       Name
                     </label>
                     <input
-                        onChange={handleChangeName}
+                        onChange={(e) => handleChange(e, setName)}
                         value={userName}
                         id="nameUserEdit"
                         name="name"
@@ -78,7 +64,7 @@ export default function EditUser({ users, person, callback }) {
                       Email
                     </label>
                     <input
-                        onChange={handleChangeEmail}
+                        onChange={(e) => handleChange(e, setEmail)}
                         value={userEmail}
                         id="userEmailEdit"
                         name="email"
@@ -93,7 +79,7 @@ export default function EditUser({ users, person, callback }) {
                       Phone
                     </label>
                     <input
-                        onChange={handleChangePhone}
+                        onChange={(e) => handleChange(e, setPhone)}
                         value={userPhone}
                         id="userEmailEdit"
                         name="email"
