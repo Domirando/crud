@@ -13,18 +13,21 @@ export default function EditUser({ users, person, callback }) {
     setName(person.name);
     setEmail(person.email);
     setPhone(person.phone);
+    setOpen(!isOpen);
     console.log("now you have to edit: ", person.name)
   }
-
+  // document.addEventListener('mousedown', event => {
+  //
+  //   setOpen(!isOpen)
+  // })
   function saveChanges(edUser) {
-    let editingPerson = users.find((person) => person.id === edUser.id);
 
+    let editingPerson = users.find((person) => person.id === edUser.id);
     editingPerson.name = userName;
     editingPerson.email = userEmail;
     editingPerson.phone = userPhone;
-    callback(editingPerson);
 
-    setOpen(!isOpen);
+    callback(editingPerson);
   }
   function handleChangeEmail(e) {
     e.preventDefault();

@@ -7,7 +7,6 @@ function App() {
   const [users, setUsers] = useState([]);
   const [fetchUsers, setFetchUsers] = useState(true);
   const [adding, setAdding] = useState(false);
-  const [editingMode, setEditingMode] = useState(true)
   function addUsers(name, phone, email) {
     return setUsers(
       users.concat([
@@ -44,9 +43,7 @@ function App() {
     let index = editedUsersList.findIndex((person) => user.id === person.id);
     editedUsersList.splice(index, 1, user)
     setUsers(editedUsersList);
-    // console.log(users)
   };
-
   return (
     <div className="flex flex-col">
       <h1 className="text-[40px] self-center">Users</h1>
@@ -139,7 +136,6 @@ function App() {
           </div>
         </div>
       </div>
-      {/*<Modal />*/}
     </div>
   );
 }

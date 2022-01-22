@@ -45,6 +45,19 @@ function AddUsers({ styles, onCreate }) {
     const inputEmail = useInputEmail('')
     const inputName = useInputName('')
     const [isOpen, setOpen] = useState(true)
+    // document.addEventListener("mousedown", (e) => {
+    //     // console.log(concernedElement, e.target);
+    //     if (concernedElement.contains(e.target)) {
+    //         console.log("clicked inside");
+    //     } else {
+    //         console.log("clicked outside");
+    //     }
+    // });
+    //
+    document.addEventListener('mousedown', event => {
+        setOpen(false)
+
+    })
     function submitHandler(event) {
         event.preventDefault()
         if(inputName.value().trim()){
