@@ -3,7 +3,6 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import AddUsers from "./users";
 import EditUser from "./Modal/editUser";
-import log from "tailwindcss/lib/util/log";
 function App() {
   const [users, setUsers] = useState([]);
   const [fetchUsers, setFetchUsers] = useState(true);
@@ -41,7 +40,7 @@ function App() {
   const saveEditedUser = (user) => {
     let editedUsersList = [...users];
     let index = editedUsersList.findIndex((person) => user.id === person.id);
-    editedUsersList.splice(index, 1, user);
+    editedUsersList.splice(index, 1, user)
     console.log(editedUsersList);
     setUsers(editedUsersList);
   };
@@ -54,7 +53,7 @@ function App() {
           <div className="justify-center functionalities mb-[15px] flex flex-col">
             <button
               className="self-end border border-blue-600 py-1 px-2 rounded-md m-2"
-              onClick={() => setAdding(true)}
+              onClick={() => setAdding(!adding)}
             >
               add new user
             </button>

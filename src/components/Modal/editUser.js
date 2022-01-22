@@ -28,7 +28,7 @@ export default function EditUser({ users, person, callback }) {
     editingPerson.phone = userPhone;
     callback(editingPerson);
 
-    setOpen(false);
+    setOpen(!isOpen);
   }
   function handleChangeEmail(e) {
     e.preventDefault();
