@@ -7,22 +7,17 @@ export default function EditUser({ users, person, callback }) {
   const [userName, setName] = useState("");
   const [userEmail, setEmail] = useState("");
   const [userPhone, setPhone] = useState("");
-  const [editingUser, setEditingUsers] = useState({
-    name: "",
-    email: "",
-    phone: "",
-  });
   useEffect(() => {}, [setName, setPhone, setEmail]);
 
   function editUser(person) {
     setName(person.name);
     setEmail(person.email);
     setPhone(person.phone);
+    console.log("now you have to edit: ", person.name)
   }
 
-  function saveChanges() {
-    console.log(editingUser)
-    let editingPerson = users.find(() => users.id === editingUser.id);
+  function saveChanges(edUser) {
+    let editingPerson = users.find((person) => person.id === edUser.id);
 
     editingPerson.name = userName;
     editingPerson.email = userEmail;
@@ -107,7 +102,7 @@ export default function EditUser({ users, person, callback }) {
                 </div>
                 <div>
                   <button
-                      onClick={saveChanges}
+                      onClick={() => saveChanges(person)}
                       type="submit"
                       className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 px-[70px]"
                   >

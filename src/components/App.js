@@ -7,6 +7,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const [fetchUsers, setFetchUsers] = useState(true);
   const [adding, setAdding] = useState(false);
+  const [editingMode, setEditingMode] = useState(true)
   function addUsers(name, phone, email) {
     return setUsers(
       users.concat([
@@ -43,7 +44,7 @@ function App() {
     let index = editedUsersList.findIndex((person) => user.id === person.id);
     editedUsersList.splice(index, 1, user)
     setUsers(editedUsersList);
-    console.log(users)
+    // console.log(users)
   };
 
   return (
@@ -53,7 +54,7 @@ function App() {
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div className="justify-center functionalities mb-[15px] flex flex-col">
             <button
-              className="self-end border border-blue-600 py-1 px-2 rounded-md m-2"
+              className="capitalize self-end border border-blue-600 py-1 px-2 rounded-md m-2"
               onClick={() => setAdding(!adding)}
             >
               add new user
@@ -96,13 +97,13 @@ function App() {
                         <div>
                           <div
                             className="text-sm font-medium text-gray-900"
-                            id={person.email + "_name"}
+                            id={person.id + "_name"}
                           >
                             {person.name}
                           </div>
                           <div
                             className="text-sm text-gray-500"
-                            id={person.email + "_email"}
+                            id={person.id + "_email"}
                           >
                             {person.email}
                           </div>
@@ -112,7 +113,7 @@ function App() {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div
                         className="text-sm text-gray-900"
-                        id={person.email + "_phone"}
+                        id={person.id + "_phone"}
                       >
                         {person.phone}
                       </div>
