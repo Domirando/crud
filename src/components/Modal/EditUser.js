@@ -28,7 +28,7 @@ export default function EditUser({ users, person, callback }) {
     fn(value)
   }
   return (
-      <>
+      <div>
         <a
             href="#"
             onClick={() => (setEdit(true), editUser(person))}
@@ -107,6 +107,6 @@ export default function EditUser({ users, person, callback }) {
               </form>
             </div>
         )}
-      </>
+      </div>
   );
 }

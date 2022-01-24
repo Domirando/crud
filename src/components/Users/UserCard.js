@@ -55,6 +55,5 @@ export default function UserCard({ person, setUsers, users }) {
                     </button>
                 </td>
             </tr>
-
     )
 }
